@@ -4,8 +4,8 @@ const { v1: uuidv1 } = require("uuid");
 
 function uploadToS3(data, filename) {
   const BUCKET_NAME = "sharpener1234";
-  const IAM_USER_KEY = "AKIASQA7ETPUL7GEB6X6";
-  const IAM_USER_SECRET = "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";
+  const IAM_USER_KEY = "";
+  const IAM_USER_SECRET = "";
 
   let s3bucket = new AWS.S3({
     accessKeyId: IAM_USER_KEY,
