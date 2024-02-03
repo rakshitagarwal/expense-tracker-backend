@@ -1,21 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <form onsubmit="login(event)">
-        <label for="email">Enter your email:</label>
-        <input type="email" name="email" required />
-        <input type="password" name="password" required />
-        <button>Login</button>
-    </form>
-    <button onclick="forgotpassword()"> Forgot password</button>
-    <a href="../Signup/signup.html">New User - Signup Now</a>
+    <div>
+        <h2>Login</h2>
+        <form onsubmit="login(event)">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required />
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required />
+            <br>
+            <button type="submit">Login</button>
+        </form>
+        <br>
+        <button onclick="forgotPassword()">Forgot password</button>
+        <br>
+        <a href="../Signup/signup.html">New User - Signup Now</a>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./login.js" ></script>

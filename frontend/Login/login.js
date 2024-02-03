@@ -1,27 +1,40 @@
 function login(e) {
-  e.preventDefault();
-  console.log(e.target.name);
-  const form = new FormData(e.target);
+    e.preventDefault();
+    
+    // Retrieve form data
+    const form = new FormData(e.target);
+    const email = form.get("email");
+    const password = form.get("password");
 
-  const loginDetails = {
-      email: form.get("email"),
-      password: form.get("password")
+    if (!email || !password) {
+        document.body.innerHTML += `<div style="color:red;">Please provide both email and password.</div>`;
+        return;
+    }
 
-  }
-  console.log(loginDetails)
-  axios.post('http://localhost:3000/user/login',loginDetails).then(response => {
-      if(response.status === 200){
-          localStorage.setItem('token', response.data.token);
-          localStorage.setItem('userDetails', JSON.stringify(response.data.user))
-          window.location.href = "../ExpenseTracker/index.html" // change the page on successful login
-      } else {
-          throw new Error('Failed to login')
-      }
-  }).catch(err => {
-      document.body.innerHTML += `<div style="color:red;">${err} <div>`;
-  })
+    const loginDetails = {
+        email: email,
+        password: password
+    };
+
+    axios.post('http://localhost:3000/user/login', loginDetails)
+        .then(response => {
+            if (response.status === 200) {
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('userDetails', JSON.stringify(response.data.user));
+                window.location.href = "../ExpenseTracker/index.html";
+            } else {
+                throw new Error('Failed to login');
+            }
+        })
+        .catch(err => {
+            // Display error message
+            document.body.innerHTML += `<div style="color:red;">${err}</div>`;
+        });
 }
 
-function forgotpassword() {
-  window.location.href = "../ForgotPassword/index.html"
+function forgotPassword() {
+    window.location.href = "../ForgotPassword/index.html";
 }
+
+document.getElementById('loginForm').addEventListener('submit', login);
+document.getElementById('forgotPasswordBtn').addEventListener('click', forgotPassword);
